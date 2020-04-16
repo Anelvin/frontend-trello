@@ -1,0 +1,33 @@
+.body-header-home{
+    padding: 10px;
+    background-image: linear-gradient(135deg, #0079bf, #5067c5);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.svg-trello{
+    img{
+        width: 150px;
+    }
+}
+.links-auth{
+    .signin{
+        color: #ffffff;
+        text-decoration: none;
+        margin: 0 0.5vw;
+        font-weight: bold;
+    }   
+    .signin:hover{
+        text-decoration: underline;
+    }
+    .signup{
+        color: #5067c5;
+        text-decoration: none;
+        background-color: #ffffff;
+        font-weight: bold;
+        margin: 0 0.5vw;
+        padding: 10px;
+        border-radius: 6px;
+    }
+}

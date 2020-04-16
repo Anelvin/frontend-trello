@@ -1,0 +1,103 @@
+.body-characteristics-home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 50px;
+    .characteristics-1{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 60%;
+        .description-characteristics-1{
+            width: 100%;
+            h1{
+                line-height: 60px;
+            }
+            p{
+                font-size: 1.2rem;
+                line-height: 35px;
+                color:#172B4D;
+            }
+            button{
+                margin-top: 10px;
+                font-size: 1.3rem;
+                padding: 8px;
+                color: #ffffff;
+                border: 1px solid #6D8EA2;
+                background-color: #6D8EA2;
+                border-radius: 5px; 
+            }
+        }
+        .board-characteristics-1{
+            width: 100%;
+            height: 450px;
+            background: linear-gradient(#3EB9DE, #3A80DE);
+            border-radius: 20px;
+            margin-left: 50px;
+            span{
+                position: relative;
+                top: 20px;
+                left: 15px;
+                color: #ffffff;
+                background-color: rgba(11,86,139,0.25);
+                font-size: 1.3rem;
+                padding: 8px;
+                border-radius: 5px;
+            }
+            .tasks-list{
+                display: flex;
+                flex-direction: row;
+                .list{
+                    display: flex;
+                    flex-direction: column;
+                    background-color: #E5EFF5;
+                    position: relative;
+                    left: 15px;
+                    top: 40px;
+                    padding: 5px 10px;
+                    border-radius: 10px;
+                    margin-right: 10px;
+                    span{
+                        left:0;
+                        top: 0;
+                        background-color: transparent;
+                        color: #172B4D;
+                        font-size: 1rem;
+                        font-weight: bold;
+                    }
+                    .task{
+                        background-color: #ffffff;
+                        padding: 5px 10px;
+                        border-radius: 5px;
+                        width: 200px;
+                        margin: 5px;
+                        .tag{
+                            height: 7px;
+                            width: 35px;
+                            background-color: #00C2E0;
+                            border-radius: 15px;
+                            margin: 8px 0;
+                        }
+                        p{
+                            font-size: 1rem;
+                        }
+                        .description-task{
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: space-between;
+                            svg{
+                                height: 30px;
+                            }
+                            .card-user-task{
+                               img{
+                                   width: 30px;
+                               }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

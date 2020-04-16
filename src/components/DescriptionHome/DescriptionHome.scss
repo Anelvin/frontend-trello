@@ -1,0 +1,59 @@
+
+$color-base1: #0079bf;
+$color-base2: #5067c5;
+$color-success: #22bb33;
+.body-description-home{
+    background-image: linear-gradient(135deg, #0079bf, #5067c5);
+    color: white;
+    width: 100%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    div{
+        width: 60%;
+        display: flex;
+        flex-direction: row;
+        .description-home{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            h1{
+                font-size: 2.8rem;
+                line-height: 50px;
+            }
+            p{
+                font-size: 1.4rem;
+                line-height: 40px;
+            }
+        }
+        .img-description-home{
+            img{
+                margin-left: 150px;
+                width: 500px;
+            }
+        }
+        form{
+            margin-bottom: 40px;
+            input{
+                padding: 10px;
+                font-size: 1.2rem;
+                height: 30px;
+                width: 350px;
+                border: 1px solid $color-base1;
+                border-radius: 5px;
+                margin-right:10px;
+            }
+            button{
+                font-size: 1.2rem;
+                padding: 13px;
+                font-weight: bold;
+                width: 300px;
+                border: 1px solid $color-success;
+                background-color: $color-success;
+                border-radius: 5px;
+                color: #ffffff;
+            }
+
+        }
+    }
+}
