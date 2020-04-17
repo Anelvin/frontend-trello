@@ -25,7 +25,7 @@ class CharacteristicsHome extends Component {
                                         <div className="tag"></div>
                                         <p>Reuniones con clientes</p>
                                         <div className="description-task">
-                                            <svg height="10" viewBox="0 0 16 10" width="16" xmlns="http://www.w3.org/2000/svg"> <path d="m1 0h14c.5522847 0 1 .44771525 1 1s-.4477153 1-1 1h-14c-.55228475 0-1-.44771525-1-1s.44771525-1 1-1zm0 4h14c.5522847 0 1 .44771525 1 1s-.4477153 1-1 1h-14c-.55228475 0-1-.44771525-1-1s.44771525-1 1-1zm0 4h8c.55228475 0 1 .44771525 1 1s-.44771525 1-1 1h-8c-.55228475 0-1-.44771525-1-1s.44771525-1 1-1z" fill="#30364c" fill-rule="evenodd" opacity=".3"></path> </svg>
+                                            <svg height="10" viewBox="0 0 16 10" width="16" xmlns="http://www.w3.org/2000/svg"> <path d="m1 0h14c.5522847 0 1 .44771525 1 1s-.4477153 1-1 1h-14c-.55228475 0-1-.44771525-1-1s.44771525-1 1-1zm0 4h14c.5522847 0 1 .44771525 1 1s-.4477153 1-1 1h-14c-.55228475 0-1-.44771525-1-1s.44771525-1 1-1zm0 4h8c.55228475 0 1 .44771525 1 1s-.44771525 1-1 1h-8c-.55228475 0-1-.44771525-1-1s.44771525-1 1-1z" fill="#30364c"  opacity=".3"></path> </svg>
                                             <div className="card-user-task">
                                                 <img src="./img/avatar1.png" alt=""/>
                                             </div>
@@ -35,7 +35,7 @@ class CharacteristicsHome extends Component {
                                         <div className="tag"></div>
                                         <p>Programar seminario web</p>
                                         <div className="description-task">
-                                            <svg height="10" viewBox="0 0 16 10" width="16" xmlns="http://www.w3.org/2000/svg"> <path d="m1 0h14c.5522847 0 1 .44771525 1 1s-.4477153 1-1 1h-14c-.55228475 0-1-.44771525-1-1s.44771525-1 1-1zm0 4h14c.5522847 0 1 .44771525 1 1s-.4477153 1-1 1h-14c-.55228475 0-1-.44771525-1-1s.44771525-1 1-1zm0 4h8c.55228475 0 1 .44771525 1 1s-.44771525 1-1 1h-8c-.55228475 0-1-.44771525-1-1s.44771525-1 1-1z" fill="#30364c" fill-rule="evenodd" opacity=".3"></path> </svg>
+                                            <svg height="10" viewBox="0 0 16 10" width="16" xmlns="http://www.w3.org/2000/svg"> <path d="m1 0h14c.5522847 0 1 .44771525 1 1s-.4477153 1-1 1h-14c-.55228475 0-1-.44771525-1-1s.44771525-1 1-1zm0 4h14c.5522847 0 1 .44771525 1 1s-.4477153 1-1 1h-14c-.55228475 0-1-.44771525-1-1s.44771525-1 1-1zm0 4h8c.55228475 0 1 .44771525 1 1s-.44771525 1-1 1h-8c-.55228475 0-1-.44771525-1-1s.44771525-1 1-1z" fill="#30364c" opacity=".3"></path> </svg>
                                             <div className="card-user-task">
                                                 <img src="./img/avatar1.png" alt=""/>
                                                 <img src="./img/avatar3.png" alt=""/>
@@ -46,7 +46,7 @@ class CharacteristicsHome extends Component {
                                         <div className="tag"></div>
                                         <p>Enviar boletín por correo electrónico</p>
                                         <div className="description-task">
-                                        <svg height="10" viewBox="0 0 16 10" width="16" xmlns="http://www.w3.org/2000/svg"> <path d="m1 0h14c.5522847 0 1 .44771525 1 1s-.4477153 1-1 1h-14c-.55228475 0-1-.44771525-1-1s.44771525-1 1-1zm0 4h14c.5522847 0 1 .44771525 1 1s-.4477153 1-1 1h-14c-.55228475 0-1-.44771525-1-1s.44771525-1 1-1zm0 4h8c.55228475 0 1 .44771525 1 1s-.44771525 1-1 1h-8c-.55228475 0-1-.44771525-1-1s.44771525-1 1-1z" fill="#30364c" fill-rule="evenodd" opacity=".3"></path> </svg>
+                                        <svg height="10" viewBox="0 0 16 10" width="16" xmlns="http://www.w3.org/2000/svg"> <path d="m1 0h14c.5522847 0 1 .44771525 1 1s-.4477153 1-1 1h-14c-.55228475 0-1-.44771525-1-1s.44771525-1 1-1zm0 4h14c.5522847 0 1 .44771525 1 1s-.4477153 1-1 1h-14c-.55228475 0-1-.44771525-1-1s.44771525-1 1-1zm0 4h8c.55228475 0 1 .44771525 1 1s-.44771525 1-1 1h-8c-.55228475 0-1-.44771525-1-1s.44771525-1 1-1z" fill="#30364c" opacity=".3"></path> </svg>
                                             <div className="card-user-task">
                                                 <img src="./img/avatar2.png" alt=""/>
                                             </div>
@@ -61,7 +61,7 @@ class CharacteristicsHome extends Component {
                                         <div className="tag"></div>
                                         <p>Publicar podcast</p>
                                         <div className="description-task">
-                                        <svg height="10" viewBox="0 0 16 10" width="16" xmlns="http://www.w3.org/2000/svg"> <path d="m1 0h14c.5522847 0 1 .44771525 1 1s-.4477153 1-1 1h-14c-.55228475 0-1-.44771525-1-1s.44771525-1 1-1zm0 4h14c.5522847 0 1 .44771525 1 1s-.4477153 1-1 1h-14c-.55228475 0-1-.44771525-1-1s.44771525-1 1-1zm0 4h8c.55228475 0 1 .44771525 1 1s-.44771525 1-1 1h-8c-.55228475 0-1-.44771525-1-1s.44771525-1 1-1z" fill="#30364c" fill-rule="evenodd" opacity=".3"></path> </svg>
+                                        <svg height="10" viewBox="0 0 16 10" width="16" xmlns="http://www.w3.org/2000/svg"> <path d="m1 0h14c.5522847 0 1 .44771525 1 1s-.4477153 1-1 1h-14c-.55228475 0-1-.44771525-1-1s.44771525-1 1-1zm0 4h14c.5522847 0 1 .44771525 1 1s-.4477153 1-1 1h-14c-.55228475 0-1-.44771525-1-1s.44771525-1 1-1zm0 4h8c.55228475 0 1 .44771525 1 1s-.44771525 1-1 1h-8c-.55228475 0-1-.44771525-1-1s.44771525-1 1-1z" fill="#30364c" opacity=".3"></path> </svg>
                                             <div className="card-user-task">
                                                 <img src="./img/avatar2.png" alt=""/>
                                                 <img src="./img/avatar3.png" alt=""/>
@@ -72,7 +72,7 @@ class CharacteristicsHome extends Component {
                                         <div className="tag"></div>
                                         <p>Lanzar sitio web</p>
                                         <div className="description-task">
-                                        <svg height="10" viewBox="0 0 16 10" width="16" xmlns="http://www.w3.org/2000/svg"> <path d="m1 0h14c.5522847 0 1 .44771525 1 1s-.4477153 1-1 1h-14c-.55228475 0-1-.44771525-1-1s.44771525-1 1-1zm0 4h14c.5522847 0 1 .44771525 1 1s-.4477153 1-1 1h-14c-.55228475 0-1-.44771525-1-1s.44771525-1 1-1zm0 4h8c.55228475 0 1 .44771525 1 1s-.44771525 1-1 1h-8c-.55228475 0-1-.44771525-1-1s.44771525-1 1-1z" fill="#30364c" fill-rule="evenodd" opacity=".3"></path> </svg>
+                                        <svg height="10" viewBox="0 0 16 10" width="16" xmlns="http://www.w3.org/2000/svg"> <path d="m1 0h14c.5522847 0 1 .44771525 1 1s-.4477153 1-1 1h-14c-.55228475 0-1-.44771525-1-1s.44771525-1 1-1zm0 4h14c.5522847 0 1 .44771525 1 1s-.4477153 1-1 1h-14c-.55228475 0-1-.44771525-1-1s.44771525-1 1-1zm0 4h8c.55228475 0 1 .44771525 1 1s-.44771525 1-1 1h-8c-.55228475 0-1-.44771525-1-1s.44771525-1 1-1z" fill="#30364c" opacity=".3"></path> </svg>
                                             <div className="card-user-task">
                                                 <img src="./img/avatar2.png" alt=""/>
                                             </div>
