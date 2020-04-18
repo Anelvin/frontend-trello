@@ -12,7 +12,7 @@ class HeaderHome extends Component {
                </div>
                <div className="links-auth">
                     <Link className="signin" to=''>Iniciar sesión</Link>
-                    <Link className="signup" to=''>Registrarse</Link>
+                    <Link className="signup" to='/signup'>Registrarse</Link>
                </div>
             </div>
         )

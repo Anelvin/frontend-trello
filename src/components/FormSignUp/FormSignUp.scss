@@ -1,0 +1,136 @@
+$color-success: #22bb33;
+.body-form-signup{
+    background-color: rgb(245, 245, 245);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 400px;
+        background-color: #ffffff;
+        padding: 50px;
+        margin-bottom: 30px;
+        box-shadow: rgba(0,0,0,0.1) 0 0 10px;
+        border-radius: 5px;
+        h4{
+            color: #5E6C84;
+            margin-bottom: 30px;
+        }
+        .input-email-signup{
+            width: 100%;
+            input{
+                width: 100%;
+                padding: 10px 5px;
+                background-color: #FAFBFC;
+                border: 2px solid #DFE1E6;
+                border-radius: 3px;
+                margin-bottom: 20px;
+            }
+        }
+        .notice-privacy-policies{
+            p{
+                font-size: 12px;
+                color: hsl(0,0%,60%);
+                margin-bottom: 20px;
+            }
+        }
+        .button-continue-email{
+            width: 100%;
+            button{
+                width: 100%;
+                padding: 10px;
+                border: 1px solid $color-success;
+                background-color: $color-success;
+                color: #ffffff;
+                font-weight: bold;
+                border-radius: 3px;
+                margin-bottom: 10px;
+            }
+        }
+        .separator-o-signup{
+            margin-bottom: 10px;
+            p{
+                color: hsl(0,0%,60%);
+            }
+        }
+        #google{
+            width:100%;
+            box-shadow: rgba(0,0,0,0.1) 0 0 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 5px;
+            margin-bottom: 10px;
+            border-radius: 3px;
+            img{
+                width: 25px;
+                margin-right: 5px;
+            }
+            span{
+                font-weight: bold;
+            }
+        }
+        #microsoft{
+            width:100%;
+            box-shadow: rgba(0,0,0,0.1) 0 0 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 5px; 
+            border-radius: 3px;
+            margin-bottom: 20px;
+            img{
+                width: 25px;
+                margin-right: 5px;
+            }
+            span{
+                font-weight: bold;
+            }
+        }
+        hr{
+            width: 100%;
+            margin-bottom: 20px;
+            color: hsl(0,0%,60%);
+        }
+        .link-to-login{
+            .link-to-signin{
+                text-decoration: none;
+            }
+        }
+    }
+    footer{
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    background-color: rgb(245, 245, 245);
+
+        hr{
+            text-align: center;
+            width: 30%;
+            margin-bottom: 20px;
+        }
+        .credits{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            img{
+                width: 150px;
+                margin-bottom: 20px;
+            }
+            div{
+                .links-footer{
+                    margin: 0 10px;
+                }
+                margin-bottom: 20px;
+            }
+        }
+    }
+}

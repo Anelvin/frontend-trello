@@ -37,5 +37,11 @@ describe('HeaderComponent', () => {
         expect(nodo.length).toEqual(1);
     });
 
-
+    it('should redirect to /signup', () => {
+        const component = shallow(<HeaderComponent />);
+        let nodo = component.find('.signup');
+        expect(nodo.length).toEqual(1);
+        expect(nodo.text()).toEqual('Registrarse');
+        expect(nodo.prop('to')).toEqual('/signup')
+    })
 });
