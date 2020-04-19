@@ -14,12 +14,6 @@ describe('FromSignUp component', () => {
         expect(nodo.length).toEqual(1);
     });
 
-    it('should have one tag footer', () => {
-        const component = shallow(<FormSignUp />);
-        let nodo = component.find('footer');
-        expect(nodo.length).toEqual(1);
-    });
-
     it('should have one tag h4', () => {
         const component = shallow(<FormSignUp />);
         let nodo = component.find('h4');
@@ -30,7 +24,7 @@ describe('FromSignUp component', () => {
     it('should have twelve tags Link', () => {
         const component = shallow(<FormSignUp />);
         let nodo = component.find('Link');
-        expect(nodo.length).toEqual(12);
+        expect(nodo.length).toEqual(3);
     });
 
     it('should have one class body-form-signup', () => {
@@ -66,12 +60,6 @@ describe('FromSignUp component', () => {
     it('should have one class link-to-login', () => {
         const component = shallow(<FormSignUp />);
         let nodo = component.find('.link-to-login');
-        expect(nodo.length).toEqual(1);
-    });
-
-    it('should have one class credits', () => {
-        const component = shallow(<FormSignUp />);
-        let nodo = component.find('.credits');
         expect(nodo.length).toEqual(1);
     });
 
