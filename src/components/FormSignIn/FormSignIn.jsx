@@ -16,7 +16,7 @@ class FormSignIn extends Component {
                         <input type="text" name="" id="" placeholder="Introduzca la contraseña"/>
                     </div>
                     <div className="button-continue-email">
-                        <button>Iniciar sesión</button>
+                        <button id="buttom-signin">Iniciar sesión</button>
                     </div>
                     <div className="separator-o-signup">
                         <p>o</p>
