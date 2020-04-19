@@ -11,7 +11,7 @@ class HeaderHome extends Component {
                     <img src="./img/trello-logo-white3.svg" alt=""/>
                </div>
                <div className="links-auth">
-                    <Link className="signin" to=''>Iniciar sesión</Link>
+                    <Link className="signin" to='/signin'>Iniciar sesión</Link>
                     <Link className="signup" to='/signup'>Registrarse</Link>
                </div>
             </div>
