@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './CharacteristicsHome.scss';
+import { Link } from 'react-router-dom';
 
 class CharacteristicsHome extends Component {
 
@@ -150,11 +151,11 @@ class CharacteristicsHome extends Component {
                             <p>Trello permanece sincronizado en todos sus dispositivos allá donde esté. Colabore con su equipo 
                                 desde cualquier lugar, ya sea en el autobús o en la playa.</p>
                                 <div className="download-app">
-                                    <a href="">
-                                        <img className="img-mobile" src="https://d2k1ftgv7pobq7.cloudfront.net/meta/p/res/images/eebf313cb223112b503b7322173b013c/btn-appstore-black.png" alt=""/>
+                                    <a href="https://d2k1ftgv7pobq7.cloudfront.net/meta/p/res/images/eebf313cb223112b503b7322173b013c/btn-appstore-black.png">
+                                        <img className="img-mobile" src="https://d2k1ftgv7pobq7.cloudfront.net/meta/p/res/images/eebf313cb223112b503b7322173b013c/btn-appstore-black.png" alt="AppStore"/>
                                     </a>
-                                    <a href="">
-                                        <img className="img-mobile" src="https://d2k1ftgv7pobq7.cloudfront.net/meta/p/res/images/bcde9868a665af4ab4efe460c46fbc7b/btn-playstore-black.png" alt=""/>
+                                    <a href="https://d2k1ftgv7pobq7.cloudfront.net/meta/p/res/images/bcde9868a665af4ab4efe460c46fbc7b/btn-playstore-black.png">
+                                        <img className="img-mobile" src="https://d2k1ftgv7pobq7.cloudfront.net/meta/p/res/images/bcde9868a665af4ab4efe460c46fbc7b/btn-playstore-black.png" alt="PlayStore"/>
                                     </a>
                                 </div>
                         </div>
@@ -162,17 +163,17 @@ class CharacteristicsHome extends Component {
                 </div>
                 <footer>
                     <div>
-                        <a href="">Plantillas</a>
-                        <a href="">Precios</a>
-                        <a href="">Aplicaciones</a>
-                        <a href="">Trabajos</a>
-                        <a href="">Blog</a>
-                        <a href="">Desarrolladores</a>
-                        <a href="">Acerca de</a>
-                        <a href="">Ayuda</a>
-                        <a href="">Legal</a>
-                        <a href="">Configuración de las cookies</a>
-                        <a href="">Privacidad</a>
+                        <Link to="https://trello.com/templates">Plantillas</Link>
+                        <Link to="https://trello.com/pricing">Precios</Link>
+                        <Link to="https://trello.com/platforms">Aplicaciones</Link>
+                        <Link to="https://www.atlassian.com/company/careers/trello">Trabajos</Link>
+                        <Link to="https://blog.trello.com/">Blog</Link>
+                        <Link to="https://developer.atlassian.com/cloud/trello/">Desarrolladores</Link>
+                        <Link to="https://trello.com/about">Acerca de</Link>
+                        <Link to="https://help.trello.com/">Ayuda</Link>
+                        <Link to="https://www.atlassian.com/legal/cloud-terms-of-service">Legal</Link>
+                        <Link to="https://trello.com/#">Configuración de las cookies</Link>
+                        <Link to="https://www.atlassian.com/legal/privacy-policy">Privacidad</Link>
                     </div>
                     <div className="container-image-atlassian">
                         <img src="https://d2k1ftgv7pobq7.cloudfront.net/meta/p/res/images/6cdbcb3dcf82bba860f1768d184161ee/atlassian-logo-gray-small.svg" alt=""/>
