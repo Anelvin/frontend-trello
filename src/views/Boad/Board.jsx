@@ -2,10 +2,6 @@ import React, { Component, useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import uuid from "uuid/v4";
 
-const add = () => {
-
-}
-
 const onDragEnd = (result) => {
     console.log(result);
   /*if (!result.destination) return;

@@ -6,6 +6,7 @@ import SignUp from './views/SignUp/SignUp';
 import SignIn from './views/SignIn/SignIn';
 import Board from './views/Boad/Board';
 import OpenModal from  './components/OpenModal/OpenModal';
+import Dashboard from './views/Dashboard/Dashboard';
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
           <Route path="/signin" component={SignIn} />
           <Route path="/board" component={Board} />
           <Route path='/modal' component={OpenModal} />
+          <Route path='/dashboard' component={Dashboard} />
         </Switch>
       </Router>
     );
