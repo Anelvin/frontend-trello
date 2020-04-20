@@ -3,6 +3,8 @@ import './FormSignUp.scss';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { spinnerToTrue } from '../../store/actions/spinnerActions';
+import Axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 class FormSignUp extends Component {
     constructor(props){
@@ -13,26 +15,33 @@ class FormSignUp extends Component {
         }
     }
 
-    componentDidMount() {
-        console.log(this.props.loading);
+    handleChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
     }
+
+    handleSubmit = () => {
+        this.props.handleSendData(this.state);
+    }
+
     render(){
         return ( 
                 <div className="body-form-signup">
-                <form action="">
+                <div className="form">
                     <h4>Crea tu cuenta</h4>
                     <div className="input-email-signup">
-                        <input type="text" name="email" value={this.state.email} placeholder="Introduzca el correo electrónico"/>
+                        <input type="email" name="email" value={this.state.email} onChange={this.handleChange} placeholder="Introduzca el correo electrónico"/>
                     </div>
                     <div className="input-email-signup">
-                        <input type="password" name="password" value={this.state.password} placeholder="Introduzca la contraseña"/>
+                        <input type="password" name="password" value={this.state.password} onChange={this.handleChange} placeholder="Introduzca la contraseña"/>
                     </div>
                     <div className="notice-privacy-policies">
                         <p>Al registrarse, confirma que ha leído y aceptado nuestras <Link to="/legal">Condiciones del Servicio</Link>
                         y nuestra <Link to="/privacy">Política de Privacidad.</Link></p>
                     </div>
                     <div className="button-continue-email">
-                        <button>Registrarse</button>
+                        <button onClick={this.handleSubmit}>Registrarse</button>
                     </div>
                     <div className="separator-o-signup">
                         <p>o</p>
@@ -49,7 +58,7 @@ class FormSignUp extends Component {
                     <div className="link-to-login">
                         <Link className="link-to-signin" to='/signin'>¿Ya tiene una cuenta? Inicie sesión</Link>
                     </div>
-                </form>
+                </div>
             </div>
         )
     }
