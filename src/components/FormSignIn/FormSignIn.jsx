@@ -3,20 +3,38 @@ import './FormSignIn.scss';
 import { Link } from 'react-router-dom';
 
 class FormSignIn extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            email: '',
+            password: ''
+        }
+    }
+
+    handleChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
+    handleSubmit = () => {
+        this.props.handleSendData(this.state);
+    }
+
 
     render(){
         return (
             <div className="body-form-signup">
-                <form action="">
+                <div className="form">
                     <h4>Iniciar sesión en Trello</h4>
                     <div className="input-email-signup">
-                        <input type="text" name="" id="" placeholder="Introduzca el correo electrónico"/>
+                        <input type="email" name="email" value={this.state.email} onChange={this.handleChange} placeholder="Introduzca el correo electrónico"/>
                     </div>
                     <div className="input-email-signup">
-                        <input type="text" name="" id="" placeholder="Introduzca la contraseña"/>
+                        <input type="password" name="password" value={this.state.password} onChange={this.handleChange} placeholder="Introduzca la contraseña"/>
                     </div>
                     <div className="button-continue-email">
-                        <button id="buttom-signin">Iniciar sesión</button>
+                        <button id="buttom-signin" onClick={this.handleSubmit}>Iniciar sesión</button>
                     </div>
                     <div className="separator-o-signup">
                         <p>o</p>
@@ -36,7 +54,7 @@ class FormSignIn extends Component {
                     <div className="link-to-login">
                         <Link className="link-to-signin" to='/signin'>Regóistrese para crearuna cuenta</Link>
                     </div>
-                </form>
+                </div>
             </div>
         )
     }
