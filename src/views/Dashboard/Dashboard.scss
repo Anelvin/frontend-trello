@@ -1,0 +1,31 @@
+.body-dashboard{
+    display: flex;
+    flex-direction: row;
+    margin-left: 20%;
+    margin-top: 25px;
+    .sidebar{
+        display: flex;
+        flex-direction: column;
+        margin-right: 10px;
+        width: 15%;
+        h3{
+            margin: 5px 0;
+            padding: 3px;
+        }
+        h3:hover{
+            cursor: pointer;
+            background-color: #e4f0f6;
+            color: #0079bf;
+            padding: 3px;
+            border-radius: 3px;
+        }
+    }
+    .list-boards{
+        div{
+            display: flex;
+            flex-direction: row;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+    }
+}

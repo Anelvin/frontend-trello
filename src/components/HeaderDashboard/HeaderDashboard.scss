@@ -1,0 +1,28 @@
+.body-header-dashboard{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #026aa7;
+    align-items: center;
+    .body-left{
+        display: flex;
+        flex-direction: row;
+        span{
+            margin: 5px;
+            width: 35px;
+            height: 35px;
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 2px;
+        }
+    }
+    .body-center{
+        img{
+            width: 100px;
+        }
+    }
+    .body-right{
+        img{
+            width: 50px;
+        }
+    }
+}

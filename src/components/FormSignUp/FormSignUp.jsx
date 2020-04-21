@@ -3,8 +3,6 @@ import './FormSignUp.scss';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { spinnerToTrue } from '../../store/actions/spinnerActions';
-import Axios from 'axios';
-import { Redirect } from 'react-router-dom';
 
 class FormSignUp extends Component {
     constructor(props){
