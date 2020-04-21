@@ -1,7 +1,16 @@
 .body-mini-board{
     width: 200px;
     height: 110px;
-    background-color: green;
+    background-color:rgba(23, 128, 214, 0.5);
     border-radius: 4px;
-    margin-right: 20px
+    margin-right: 20px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items: center;
+}
+
+.body-mini-board:hover{
+    cursor: pointer;
 }
