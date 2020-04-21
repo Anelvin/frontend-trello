@@ -1,6 +1,7 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import uuid from "uuid/v4";
+import { connect } from 'react-redux';
 
 const onDragEnd = (result) => {
     console.log(result);
@@ -84,7 +85,7 @@ class Board extends Component {
 
     componentDidMount () {
         this.setState({
-            columns:  this.state.columns.sort(function (a, b) {
+            columns:  this.props.columns.sort(function (a, b) {
                 if (a.index > b.index){
                     return 1;
                 }
@@ -119,7 +120,7 @@ class Board extends Component {
                 onDragEnd(result)}
             }
           >
-            {Object.entries(this.state.columns).map(([columnId, column], index) => {
+            {Object.entries(this.props.columns).map(([columnId, column], index) => {
               return (
                 <div
                   style={{
@@ -195,4 +196,10 @@ class Board extends Component {
     }
 }
 
-export default Board;
+const mapStateToProps = state => {
+  return {
+    columns: state.columnsReducer.columns
+  }
+}
+
+export default connect(mapStateToProps, null) (Board);

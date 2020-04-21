@@ -18,7 +18,7 @@ class App extends Component {
           <Route path="/signin" component={SignIn} />
           <Route path="/board" component={Board} />
           <Route path='/modal' component={OpenModal} />
-          <Route path='/dashboard' component={Dashboard} />
+          <Route path='/dashboard/:user' component={Dashboard} />
         </Switch>
       </Router>
     );
