@@ -4,12 +4,14 @@ import HeaderDashboard from '../../components/HeaderDashboard/HeaderDashboard';
 import MiniBoard from '../../components/MiniBoard/MiniBoard';
 import { connect } from 'react-redux';
 import ModalBoard from '../../components/ModalBoard/ModalBoard';
+import { saveBoards } from '../../store/actions/boardActions';
+import Axios from 'axios';
 
 class Dashboard extends Component {
     constructor(props){
         super(props);
         this.state = {
-            modalShow: true,
+            modalShow: false,
             user:''
         }
     }
@@ -18,6 +20,15 @@ class Dashboard extends Component {
         this.setState({
             user: this.props.match.params.user
         })
+        let data = {
+            email: this.props.user
+        }
+        Axios.post('http://localhost:3001/userboard/findbyuser', data)
+            .then(result => {
+                console.log(result);
+                this.props.saveBoards(result.data);
+            })
+        
     }
  
     handleModal = () => {
@@ -59,8 +70,15 @@ class Dashboard extends Component {
 
 const mapStateToProps = state => {
     return {
-        dashboars: state.columnsReducer.columns
+        dashboars: state.boardReducer.boards,
+        user: state.userReducer.user[1]
     }
 }
 
-export default connect(mapStateToProps, null)(Dashboard);
+const mapDispatchToProps = dispatch => {
+    return {
+        saveBoards: (boards) => dispatch(saveBoards(boards))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

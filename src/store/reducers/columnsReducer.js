@@ -1,6 +1,6 @@
 const stateInitial = {
     columns: [
-        {
+      {
           name: "Requested",
           items: [
             { id: '10', content: "First task" },

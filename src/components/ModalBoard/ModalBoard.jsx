@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import './ModalBoard.scss';
 import Axios from 'axios';
+import { connect } from 'react-redux';
+import { saveBoards } from '../../store/actions/boardActions';
 
 class ModalBoard extends Component {
     constructor(props){
@@ -28,7 +30,7 @@ class ModalBoard extends Component {
 
         Axios.post('http://localhost:3001/board/create', data)
             .then(result => {
-                console.log(result);
+                this.props.boards(result.data.boards);
                 this.close();
             })
     }
@@ -51,4 +53,10 @@ class ModalBoard extends Component {
     }
 }
 
-export default ModalBoard;
+const mapDispatchToProps = dispatch => {
+    return {
+        boards: (boards) => dispatch(saveBoards(boards))
+    }
+}
+
+export default connect(null, mapDispatchToProps) (ModalBoard);
