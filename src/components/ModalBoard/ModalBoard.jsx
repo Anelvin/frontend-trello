@@ -53,10 +53,17 @@ class ModalBoard extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        user: state.userReducer.user[1]
+    }
+}
+
+
 const mapDispatchToProps = dispatch => {
     return {
         boards: (boards) => dispatch(saveBoards(boards))
     }
 }
 
-export default connect(null, mapDispatchToProps) (ModalBoard);
+export default connect(mapStateToProps, mapDispatchToProps) (ModalBoard);
