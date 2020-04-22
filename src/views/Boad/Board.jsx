@@ -46,39 +46,7 @@ class Board extends Component {
     constructor(props){
         super(props);
         this.state = {
-            columns: [
-                {
-                  name: "Requested",
-                  items: [
-                    { id: '10', content: "First task" },
-                    { id: uuid(), content: "Second task" },
-                    { id: uuid(), content: "Third task" },
-                    { id: uuid(), content: "Fourth task" },
-                    { id: uuid(), content: "Fifth task" }
-                  ],
-                  index: 3
-                },
-                {
-                  name: "To do",
-                  items: [
-                  { id: uuid(), content: "Six" },
-                  { id: uuid(), content: "Seven" }],
-                  index: 2
-                },
-                {
-                  name: "In Progress",
-                  items: [
-                  { id: uuid(), content: "Nine" },
-                  { id: uuid(), content: "Ten" },
-                  { id: uuid(), content: "Eleven" }],
-                  index: 1
-                },
-                {
-                  name: "Done",
-                  items: [],
-                  index: 0
-                }
-            ]
+            
             
         }
     }
@@ -120,7 +88,7 @@ class Board extends Component {
                 onDragEnd(result)}
             }
           >
-            {Object.entries(this.props.columns).map(([columnId, column], index) => {
+            {Object.entries(this.props.boards).map(([columnId, column], index) => {
               return (
                 <div
                   style={{
@@ -198,7 +166,7 @@ class Board extends Component {
 
 const mapStateToProps = state => {
   return {
-    columns: state.columnsReducer.columns
+    boards: state.boardReducer.boards
   }
 }
 

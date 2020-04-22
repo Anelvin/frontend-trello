@@ -19,7 +19,7 @@ class SignIn extends Component {
             console.log(result);
             this.props.saveToken(result.data.token);
             this.props.saveUser(result.data.user);
-            this.props.history.push(`/dashboard/${result.data.user}`);
+            this.props.history.push(`/dashboard/${result.data.user[0]}`);
         })
     }
 
