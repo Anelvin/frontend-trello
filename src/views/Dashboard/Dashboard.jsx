@@ -5,6 +5,7 @@ import MiniBoard from '../../components/MiniBoard/MiniBoard';
 import { connect } from 'react-redux';
 import ModalBoard from '../../components/ModalBoard/ModalBoard';
 import { saveBoards } from '../../store/actions/boardActions';
+import { saveTaskList } from '../../store/actions/taskListActions';
 import Axios from 'axios';
 
 class Dashboard extends Component {
@@ -28,13 +29,16 @@ class Dashboard extends Component {
                 console.log(result);
                 this.props.saveBoards(result.data);
             })
-        
     }
  
     handleModal = () => {
         this.setState({
             modalShow: !this.state.modalShow
         })
+    }
+
+    openBoard = (boardId) => {
+        this.props.history.push(`/${this.props.user[0]}/detailsboard/${boardId}`);
     }
 
     render(){
@@ -57,7 +61,7 @@ class Dashboard extends Component {
                         <h3>Tableros personales</h3>
                         <div>
                             {this.props.dashboars.map(board => (
-                                <MiniBoard name={board.name} id={board.index}/>
+                                <MiniBoard key={board.Board.id} name={board.Board.name} id={board.Board.id} openBoard={this.openBoard}/>
                             )
                             )}
                         </div>
@@ -71,7 +75,7 @@ class Dashboard extends Component {
 const mapStateToProps = state => {
     return {
         dashboars: state.boardReducer.boards,
-        user: state.userReducer.user[1]
+        user: state.userReducer.user
     }
 }
 

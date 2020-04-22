@@ -7,7 +7,7 @@ class MiniBoard extends Component {
     }
 
     handleKey = () => {
-        console.log(this.props.id);
+        this.props.openBoard(this.props.id);
     }
 
     render(){
