@@ -49,8 +49,8 @@ class BoardDetails extends Component {
     constructor(props){
         super(props);
         this.state = {
-            
-            
+            addTaskList: false,
+            nameTaskList: ''
         }
     }
 
@@ -63,27 +63,14 @@ class BoardDetails extends Component {
             .then(result => {
                 console.log(result);
                 this.props.setTasklist(result.data);
-            })
-        /*this.setState({
-            columns:  this.props.columns.sort(function (a, b) {
-                if (a.index > b.index){
-                    return 1;
-                }
-                if (a.index < b.index){
-                    return -1;
-                }
-    
-                return 0;
-            })
-        })*/
-       
+            }) 
     }
 
     handleClick = (e) => {
         console.log(e.target.id);
     }
 
-    /*add = () => {
+    add = () => {
         let oldColumns = this.state.columns;
         let newColumn = {name: "Nueva Etiqueta", items:[], index:4};
 
@@ -91,89 +78,138 @@ class BoardDetails extends Component {
         this.setState({
             columns: oldColumns
         })
-    }*/
+    }
+
+    newTaskList = () => {
+      this.setState({
+        addTaskList:true
+      });
+    }
+
+    cancelNewTaskList = () => {
+      this.setState({
+        addTaskList: false
+      })
+    }
+
+    addNewTaskLis = () => {
+      let data = {
+        email: this.state.nameTaskList,
+        board: this.props.match.params.board,
+        description: this.state.nameTaskList
+      }
+      Axios.post('http://localhost:3001/tasklist/create', data)
+        .then(result => {
+          this.props.setTasklist(result.data.taskLists);
+          this.setState({
+            addTaskList: false
+          })
+        })
+    }
+
+    handleChange = (event) => {
+      this.setState({
+        [event.target.name]: event.target.value
+      })
+    }
+
     render(){
         return (
             <div>
-                <div>
-                    <HeaderDashboard />
-                </div>
-                <div style={{ display: "flex", height: "100%" }} className="constainer-list">
-                    <DragDropContext
-                        onDragEnd={result => {onDragEnd(result)}}
-                    >
-            {Object.entries(this.props.taskList).map(([columnId, column], index) => {
-              return (
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center"
-                  }}
-                  key={columnId}
-                >
-                  <div style={{ margin: 8 }} className="list">
-                  <input type="text" value={column.name} />
-                    <Droppable droppableId={columnId} key={columnId}>
-                      {(provided, snapshot) => {
-                        return (
-                          <div
-                            {...provided.droppableProps}
-                            ref={provided.innerRef}
-                            style={{
-                              
-                              padding: 4,
-                              width: 250,
-                              minHeight: 500
-                            }}
-                            className="tasklist"
-                          >
-                            {/*column.items.map((item, index) => {
-                              return (
-                                <Draggable
-                                  key={item.id}
-                                  draggableId={item.id}
-                                  index={index}
-                                >
-                                  {(provided, snapshot) => {
-                                    return (
-                                      <div
-                                      id={columnId}
-                                        ref={provided.innerRef}
-                                        {...provided.draggableProps}
-                                        {...provided.dragHandleProps}
-                                        style={{
-                                          userSelect: "none",
-                                          padding: 16,
-                                          margin: "0 0 8px 0",
-                                          minHeight: "50px",
-                                          backgroundColor: snapshot.isDragging
-                                            ? "#263B4A"
-                                            : "#456C86",
-                                          color: "white",
-                                          ...provided.draggableProps.style
-                                        }}
-                                      onClick={this.handleClick}>
-                                        {item.content}
-                                      </div>
-                                    );
-                                  }}
-                                </Draggable>
-                              );
-                            })*/}
-                            {provided.placeholder}
+              <div>
+                  <HeaderDashboard />
+              </div>
+              <div style={{ display: "flex", height: "100%" }} className="constainer-list">
+                  <DragDropContext
+                      onDragEnd={result => {onDragEnd(result)}}
+                  >
+                    {Object.entries(this.props.taskList).map(([columnId, column], index) => {
+                      return (
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center"
+                          }}
+                          key={columnId}
+                        >
+                          <div style={{ margin: 8 }} className="list">
+                          <input type="text" value={column.name} />
+                            <Droppable droppableId={columnId} key={columnId}>
+                              {(provided, snapshot) => {
+                                return (
+                                  <div
+                                    {...provided.droppableProps}
+                                    ref={provided.innerRef}
+                                    style={{
+                                      
+                                      padding: 4,
+                                      width: 250,
+                                      minHeight: 500
+                                    }}
+                                    className="tasklist"
+                                  >
+                                    {/*column.items.map((item, index) => {
+                                      return (
+                                        <Draggable
+                                          key={item.id}
+                                          draggableId={item.id}
+                                          index={index}
+                                        >
+                                          {(provided, snapshot) => {
+                                            return (
+                                              <div
+                                              id={columnId}
+                                                ref={provided.innerRef}
+                                                {...provided.draggableProps}
+                                                {...provided.dragHandleProps}
+                                                style={{
+                                                  userSelect: "none",
+                                                  padding: 16,
+                                                  margin: "0 0 8px 0",
+                                                  minHeight: "50px",
+                                                  backgroundColor: snapshot.isDragging
+                                                    ? "#263B4A"
+                                                    : "#456C86",
+                                                  color: "white",
+                                                  ...provided.draggableProps.style
+                                                }}
+                                              onClick={this.handleClick}>
+                                                {item.content}
+                                              </div>
+                                            );
+                                          }}
+                                        </Draggable>
+                                      );
+                                    })*/}
+                                    <button className="button-add-task">+ Agregar una tarea</button>
+                                    {provided.placeholder}
+                                  </div>
+                                );
+                              }}
+                            </Droppable>
                           </div>
-                        );
-                      }}
-                    </Droppable>
-                  </div>
-                </div>
-              );
-            })}
-          </DragDropContext>
-            <button className="button-add-tasklist" onClick={this.add}>+ Agragar una lista</button>
-        </div>
-    </div>
+                        </div>
+                      );
+                    })}
+                  </DragDropContext>
+                  {this.state.addTaskList === true 
+                  ? 
+                    <div className="inputs-add-new-tasklist">
+                      <input type="text" name="nameTaskList" value={this.state.nameTaskList} onChange={this.handleChange} placeholder="Introduce el titulo de la lista"/>
+                      <div>
+                        <button className="button-save" onClick={this.addNewTaskLis}>Guardar</button>
+                        <button className="button-cancel" onClick={this.cancelNewTaskList}>Cancelar</button>
+                      </div>
+                    </div>
+                  :
+
+                    <div>
+                      <button className="button-add-tasklist" onClick={this.newTaskList}>+ Agragar una lista</button>
+                    </div>
+                }
+              </div>
+            </div>
       );
     }
 }
@@ -184,7 +220,6 @@ const mapStateToProps = state => {
     taskList: state.taskListReducer.taskList
   }
 }
-
 const mapDispatchToProps = dispatch => {
     return {
         setTasklist: (tasklist) => dispatch(saveTaskList(tasklist))
