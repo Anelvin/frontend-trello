@@ -23,9 +23,10 @@
     }
 }
 .button-add-tasklist{
+    position: block;
     margin-top: 10px;
     padding: 5px;
-    width: 200px;
+    width: 250px;
     height: 30px;
     border: 1px solid rgba(182, 181, 181, 0.5);;
     background-color: rgba(182, 181, 181, 0.5);
@@ -37,4 +38,57 @@
     background-color: #1a1616;
     color: white;
     transition: 0.3s;
+}
+.button-add-task{
+    border: 0;
+    background-color: transparent;
+    width: 100%;
+    padding: 5px;
+    border-radius: 3px;
+}
+.button-add-task:hover{
+    cursor: pointer;
+    background-color: rgba(170, 170, 170);
+}
+
+.inputs-add-new-tasklist{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    padding: 5px;
+    background-color: #ebecf0;
+    height: 10vh;
+    border-radius: 4px;
+    input{
+        padding: 8px;
+        border: 2px solid #026aa7;
+        border-radius: 4px;
+    }
+    input:focus{
+        outline: 0;
+    }
+    div{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin-top: 10px;
+        width: 250px;
+        button{
+            padding: 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: white;
+        }
+        button:hover{
+            cursor: pointer;
+        }
+        .button-save{
+            border: 1px solid #5aac44;
+            background-color: #5aac44;
+        }
+        .button-cancel{
+            border: 1px solid #ac4444;
+            background-color: #ac4444;
+        }
+    }
 }
