@@ -9,7 +9,8 @@ class FormSignUp extends Component {
         super(props);
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            name:''
         }
     }
 
@@ -29,14 +30,13 @@ class FormSignUp extends Component {
                 <div className="form">
                     <h4>Crea tu cuenta</h4>
                     <div className="input-email-signup">
+                        <input type="text" name="name" value={this.state.name} onChange={this.handleChange} placeholder="Introduzca un nombre"/>
+                    </div>
+                    <div className="input-email-signup">
                         <input type="email" name="email" value={this.state.email} onChange={this.handleChange} placeholder="Introduzca el correo electrónico"/>
                     </div>
                     <div className="input-email-signup">
                         <input type="password" name="password" value={this.state.password} onChange={this.handleChange} placeholder="Introduzca la contraseña"/>
-                    </div>
-                    <div className="notice-privacy-policies">
-                        <p>Al registrarse, confirma que ha leído y aceptado nuestras <Link to="/legal">Condiciones del Servicio</Link>
-                        y nuestra <Link to="/privacy">Política de Privacidad.</Link></p>
                     </div>
                     <div className="button-continue-email">
                         <button onClick={this.handleSubmit}>Registrarse</button>

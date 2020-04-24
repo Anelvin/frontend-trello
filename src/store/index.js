@@ -5,6 +5,7 @@ import tokenReducer from './reducers/tokenReducer';
 import columnsReducer from './reducers/columnsReducer';
 import userReducer from './reducers/userReducer';
 import taskListReducer from './reducers/taskListReducer';
+import boardActiveReducer from './reducers/boardActiveReducer';
 
 const reducers = combineReducers({
     boardReducer,
@@ -12,7 +13,8 @@ const reducers = combineReducers({
     tokenReducer,
     columnsReducer,
     userReducer,
-    taskListReducer
+    taskListReducer,
+    boardActiveReducer
 });
 
 const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
