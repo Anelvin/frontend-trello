@@ -6,8 +6,6 @@ class Modal extends Component {
         super(props);
     }
 
-
-
     close = () => {
         this.props.handleModal(false);
     }

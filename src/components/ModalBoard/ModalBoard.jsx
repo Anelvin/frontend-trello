@@ -24,7 +24,7 @@ class ModalBoard extends Component {
 
     handleSubmit = () => {
         let data = {
-            name: this.state.boardName,
+            description: this.state.boardName,
             email: this.props.user
         }
 

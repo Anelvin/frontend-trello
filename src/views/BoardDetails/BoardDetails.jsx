@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import HeaderDashboard from '../../components/HeaderDashboard/HeaderDashboard';
 import Axios from 'axios';
 import { saveTaskList } from '../../store/actions/taskListActions';
+import NewTask from '../../components/NewTask/NewTask';
+import { boardActive } from '../../store/actions/boardActiveActions';
 
 const onDragEnd = (result) => {
     console.log(result);
@@ -50,18 +52,19 @@ class BoardDetails extends Component {
         super(props);
         this.state = {
             addTaskList: false,
-            nameTaskList: ''
+            nameTaskList: '',
+            addTask: false,
+            idTaskList: null
         }
     }
 
     componentDidMount () {
-        console.log(this.props.match.params.board);
         let data = {
-            board: this.props.match.params.board
+            board: this.props.boardActive
         }
         Axios.post('http://localhost:3001/tasklist/findtasklist', data)
             .then(result => {
-                console.log(result);
+              console.log(result);
                 this.props.setTasklist(result.data);
             }) 
     }
@@ -92,7 +95,7 @@ class BoardDetails extends Component {
       })
     }
 
-    addNewTaskLis = () => {
+    addNewTaskList = () => {
       let data = {
         email: this.state.nameTaskList,
         board: this.props.match.params.board,
@@ -100,11 +103,19 @@ class BoardDetails extends Component {
       }
       Axios.post('http://localhost:3001/tasklist/create', data)
         .then(result => {
+          console.log(result-data);
           this.props.setTasklist(result.data.taskLists);
           this.setState({
             addTaskList: false
           })
         })
+    }
+
+    addNewTask = (event) => {
+      this.setState({
+        idTaskList: event.target.id,
+        addTask:true
+      })
     }
 
     handleChange = (event) => {
@@ -113,11 +124,23 @@ class BoardDetails extends Component {
       })
     }
 
+    handleModal = () => {
+      this.setState({
+        addTask: !this.state.addTask
+      })
+    }
+
     render(){
         return (
             <div>
               <div>
                   <HeaderDashboard />
+                  {this.state.addTask === true 
+                  ?
+                  <NewTask handleModal={this.handleModal} idTaskList={this.state.idTaskList}/>
+                  :
+                  null
+                  }
               </div>
               <div style={{ display: "flex", height: "100%" }} className="constainer-list">
                   <DragDropContext
@@ -134,7 +157,7 @@ class BoardDetails extends Component {
                           key={columnId}
                         >
                           <div style={{ margin: 8 }} className="list">
-                          <input type="text" value={column.name} />
+                          <input type="text" value={column.description} />
                             <Droppable droppableId={columnId} key={columnId}>
                               {(provided, snapshot) => {
                                 return (
@@ -149,11 +172,11 @@ class BoardDetails extends Component {
                                     }}
                                     className="tasklist"
                                   >
-                                    {/*column.items.map((item, index) => {
+                                    {column.Tasks.map((item, index) => {
                                       return (
                                         <Draggable
-                                          key={item.id}
-                                          draggableId={item.id}
+                                          key={(item.id).toString()}
+                                          draggableId={(item.id).toString()}
                                           index={index}
                                         >
                                           {(provided, snapshot) => {
@@ -175,14 +198,16 @@ class BoardDetails extends Component {
                                                   ...provided.draggableProps.style
                                                 }}
                                               onClick={this.handleClick}>
-                                                {item.content}
+                                                {item.description}
                                               </div>
                                             );
                                           }}
                                         </Draggable>
                                       );
-                                    })*/}
-                                    <button className="button-add-task">+ Agregar una tarea</button>
+                                    })}
+                                    <div>
+                                      <button className="button-add-task" onClick={this.addNewTask} id={column.id}>+ Agregar una tarea</button>
+                                    </div>
                                     {provided.placeholder}
                                   </div>
                                 );
@@ -198,7 +223,7 @@ class BoardDetails extends Component {
                     <div className="inputs-add-new-tasklist">
                       <input type="text" name="nameTaskList" value={this.state.nameTaskList} onChange={this.handleChange} placeholder="Introduce el titulo de la lista"/>
                       <div>
-                        <button className="button-save" onClick={this.addNewTaskLis}>Guardar</button>
+                        <button className="button-save" onClick={this.addNewTaskList}>Guardar</button>
                         <button className="button-cancel" onClick={this.cancelNewTaskList}>Cancelar</button>
                       </div>
                     </div>
@@ -217,7 +242,8 @@ class BoardDetails extends Component {
 const mapStateToProps = state => {
   return {
     boards: state.boardReducer.boards,
-    taskList: state.taskListReducer.taskList
+    taskList: state.taskListReducer.taskList,
+    boardActive: state.boardActiveReducer.board
   }
 }
 const mapDispatchToProps = dispatch => {
