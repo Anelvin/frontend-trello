@@ -8,9 +8,9 @@ import { saveTaskList } from '../../store/actions/taskListActions';
 import NewTask from '../../components/NewTask/NewTask';
 import { boardActive } from '../../store/actions/boardActiveActions';
 
-const onDragEnd = (result) => {
+/*const onDragEnd = (result) => {
     console.log(result);
-  /*if (!result.destination) return;
+  if (!result.destination) return;
   const { source, destination } = result;
     console.log(source);
   if (source.droppableId !== destination.droppableId) {
@@ -43,8 +43,8 @@ const onDragEnd = (result) => {
         items: copiedItems
       }
     });
-  }*/
-};
+  }
+};*/
 
 class BoardDetails extends Component {
 
@@ -54,7 +54,8 @@ class BoardDetails extends Component {
             addTaskList: false,
             nameTaskList: '',
             addTask: false,
-            idTaskList: null
+            idTaskList: null,
+            tasklists: null
         }
     }
 
@@ -64,26 +65,32 @@ class BoardDetails extends Component {
         }
         Axios.post('http://localhost:3001/tasklist/findtasklist', data)
             .then(result => {
-              console.log(result);
+                console.log(result);
+                for(let i = 0; i < result.data.length; i++){
+                  result.data[i].Tasks.sort(function (a, b) {
+                    if (a.index > b.index) {
+                      return 1;
+                    }
+                    if (a.index < b.index) {
+                      return -1;
+                    }
+                    return 0;
+                  })
+                }
                 this.props.setTasklist(result.data);
-            }) 
+              })
+           
+    }
+
+    onDragEnd = result => {
+      console.log(result);
     }
 
     handleClick = (e) => {
         console.log(e.target.id);
     }
 
-    add = () => {
-        let oldColumns = this.state.columns;
-        let newColumn = {name: "Nueva Etiqueta", items:[], index:4};
-
-        oldColumns.push(newColumn);
-        this.setState({
-            columns: oldColumns
-        })
-    }
-
-    newTaskList = () => {
+    newTaskList = async () => {
       this.setState({
         addTaskList:true
       });
@@ -108,6 +115,7 @@ class BoardDetails extends Component {
           this.setState({
             addTaskList: false
           })
+          .then(result => console.log('Hola'))
         })
     }
 
@@ -144,7 +152,7 @@ class BoardDetails extends Component {
               </div>
               <div style={{ display: "flex", height: "100%" }} className="constainer-list">
                   <DragDropContext
-                      onDragEnd={result => {onDragEnd(result)}}
+                      onDragEnd={result => {this.onDragEnd(result)}}
                   >
                     {Object.entries(this.props.taskList).map(([columnId, column], index) => {
                       return (
@@ -155,10 +163,11 @@ class BoardDetails extends Component {
                             alignItems: "center"
                           }}
                           key={columnId}
+                          id={column.id}
                         >
                           <div style={{ margin: 8 }} className="list">
                           <input type="text" value={column.description} />
-                            <Droppable droppableId={columnId} key={columnId}>
+                            <Droppable droppableId={(column.id).toString()} key={columnId}>
                               {(provided, snapshot) => {
                                 return (
                                   <div
@@ -172,12 +181,12 @@ class BoardDetails extends Component {
                                     }}
                                     className="tasklist"
                                   >
-                                    {column.Tasks.map((item, index) => {
+                                    {column.Tasks.map(item => {
                                       return (
                                         <Draggable
                                           key={(item.id).toString()}
                                           draggableId={(item.id).toString()}
-                                          index={index}
+                                          index={item.index}
                                         >
                                           {(provided, snapshot) => {
                                             return (
