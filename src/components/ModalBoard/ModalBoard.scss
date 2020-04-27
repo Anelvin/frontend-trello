@@ -45,18 +45,19 @@
             margin: 5px 10px;
             border: 1px solid #ffffff;
             border-radius: 4px;
-            color: white;
+            color: black;
             font-weight: bold;
             font-size: 16px;
         }
         button:hover{
             cursor: pointer;
+            color: white; 
         }
         .button-success{
             background-color: #28A745;
         }
         .button-warning{
-            background-color: #FFC107;
+            background-color: #d9534f;
         }
     }
   }

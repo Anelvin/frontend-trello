@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './NewTask.scss';
 import { connect } from 'react-redux';
 import Axios from 'axios';
+import { saveTaskList } from '../../store/actions/taskListActions';
 
 class NewTask extends Component {
     constructor(props){
@@ -19,13 +20,35 @@ class NewTask extends Component {
 
     handleSubmit = () => {
         let data = {
-            description: this.state.taskName,
+            name: this.state.taskName,
             tasklist: this.props.idTaskList,
             board: this.props.boardActive
         }
         Axios.post('http://localhost:3001/task/create', data)
             .then(result => {
-                console.log(result);
+                let data = result.data;
+              console.log(data);
+                data.sort(function (a, b) {
+                  if (a.id > b.id) {
+                    return 1;
+                  }
+                  if (a.id < b.id) {
+                    return -1;
+                  }
+                  return 0;
+                })
+                for(let i = 0; i < data.length; i++){
+                  data[i].Tasks.sort(function (a, b) {
+                    if (a.index > b.index) {
+                      return 1;
+                    }
+                    if (a.index < b.index) {
+                      return -1;
+                    }
+                    return 0;
+                  })
+                }
+                this.props.setTasklist(data);
                 this.props.handleModal();
             })
     }
@@ -58,4 +81,10 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, null) (NewTask);
+const mapDispatchToProps = dispatch => {
+    return {
+        setTasklist: (tasklist) => dispatch(saveTaskList(tasklist))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (NewTask);

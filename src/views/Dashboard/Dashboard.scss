@@ -21,11 +21,30 @@
         }
     }
     .list-boards{
-        div{
+        .add-boards{
             display: flex;
             flex-direction: row;
             margin-top: 10px;
             flex-wrap: wrap;
+            align-items: center;
+            h3{
+                margin-right: 10px;
+            }
+            .button-new-board{
+                background-color: #34c427;
+                padding: 5px;
+                border-radius: 4px;
+            }
+            .button-new-board:hover{
+                cursor: pointer;
+                color: #ffffff;
+            }
+
+        }
+        .mini-boards{
+            margin-top: 15px;
+        }
+        .add-boards{
         }
     }
 }
