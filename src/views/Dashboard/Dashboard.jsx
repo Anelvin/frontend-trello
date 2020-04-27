@@ -50,7 +50,7 @@ class Dashboard extends Component {
                 <HeaderDashboard />
                 <div className="body-dashboard">
                     <div className="sidebar">
-                        <h3 onClick={this.handleModal}>Tableros</h3>
+                        <h3>Tableros</h3>
                         <h3>Plantillas</h3>
                         <h3>Inicio</h3>
                     </div>
@@ -61,8 +61,11 @@ class Dashboard extends Component {
                     null 
                     }
                     <div className="list-boards">
-                        <h3>Tableros personales</h3>
-                        <div>
+                        <div className="add-boards">
+                            <h3>Tableros personales</h3>
+                            <h3 className="button-new-board" onClick={this.handleModal}><i class="fas fa-plus"></i> Agregar tablero</h3>
+                        </div>
+                        <div className="mini-boards">
                             {this.props.dashboars.map(board => (
                                 <MiniBoard key={board.Board.id} name={board.Board.description} id={board.Board.id} openBoard={this.openBoard}/>
                             )

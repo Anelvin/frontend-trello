@@ -4,22 +4,28 @@
     justify-content: center;
     height: 100%;
 }
-.constainer-list{
-    margin-top: 20px;
-    padding-top: 20px;
-    overflow: auto;
-    .list{
-        display:flex;
-        flex-direction: column;
-        align-items: center;
-        padding-top: 10px;
-        background-color: #ebecf0;
-        border-radius: 4px;
-        input{
-            border:none;
+.container-board-details{
+    background-image: url("https://cdn.pixabay.com/photo/2015/09/09/16/05/forest-931706_960_720.jpg");
+    height: 100vh;
+    background-size: cover;
+
+    .container-list{
+        margin-top: 20px;
+        padding-top: 20px;
+        overflow: auto;
+        .list{
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 10px;
             background-color: #ebecf0;
-            text-align: center;
-            font-weight: bold;
+            border-radius: 4px;
+            input{
+                border:none;
+                background-color: #ebecf0;
+                text-align: center;
+                font-weight: bold;
+            }
         }
     }
 }
@@ -27,7 +33,6 @@
     overflow: auto;
 }
 .tasklist{
-    height: 85vh;
     .inputs-add-new-task{
         textarea{
             background-color: white;
@@ -39,6 +44,10 @@
             border-radius: 4px;
         }
     }
+    .tags{
+        color: #172b4d;
+        border-radius: 4px;
+    }
 }
 .button-add-tasklist{
     position: block;
@@ -46,8 +55,8 @@
     padding: 5px;
     width: 250px;
     height: 30px;
-    border: 1px solid rgba(182, 181, 181, 0.5);;
-    background-color: rgba(182, 181, 181, 0.5);
+    border: 1px solid rgba(182, 181, 181, 0.5);
+    background-color: rgba(182, 181, 181, 0.7);
     font-weight: bold;
     border-radius: 4px;
 }

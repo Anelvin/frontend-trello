@@ -8,43 +8,6 @@ import { saveTaskList } from '../../store/actions/taskListActions';
 import NewTask from '../../components/NewTask/NewTask';
 import { boardActive } from '../../store/actions/boardActiveActions';
 
-/*const onDragEnd = (result) => {
-    console.log(result);
-  if (!result.destination) return;
-  const { source, destination } = result;
-    console.log(source);
-  if (source.droppableId !== destination.droppableId) {
-      const sourceColumn = columns[source.droppableId]; //Almacena la columna de origen con sus tareas 
-      const destColumn = columns[destination.droppableId]; //Almacena la columna de destino con sus tareas
-      const sourceItems = [...sourceColumn.items]; //Almacena las tareas de la columna origen
-      const destItems = [...destColumn.items]; //Almacena las tareas de la columna de destino
-      const [removed] = sourceItems.splice(source.index, 1);
-    destItems.splice(destination.index, 0, removed);
-    setColumns({
-      ...columns,
-      [source.droppableId]: {
-        ...sourceColumn,
-        items: sourceItems
-      },
-      [destination.droppableId]: {
-        ...destColumn,
-        items: destItems
-      }
-    });
-  } else {
-    const column = columns[source.droppableId];
-    const copiedItems = [...column.items];
-    const [removed] = copiedItems.splice(source.index, 1);
-    copiedItems.splice(destination.index, 0, removed);
-    setColumns({
-      ...columns,
-      [source.droppableId]: {
-        ...column,
-        items: copiedItems
-      }
-    });
-  }
-};*/
 
 class BoardDetails extends Component {
 
@@ -64,10 +27,59 @@ class BoardDetails extends Component {
             board: this.props.boardActive
         }
         Axios.post('http://localhost:3001/tasklist/findtasklist', data)
-            .then(result => {
-                console.log(result);
-                for(let i = 0; i < result.data.length; i++){
-                  result.data[i].Tasks.sort(function (a, b) {
+          .then(result => {
+            let data = result.data;
+            console.log(data);
+              data.sort(function (a, b) {
+                if (a.id > b.id) {
+                  return 1;
+                }
+                if (a.id < b.id) {
+                  return -1;
+                }
+                return 0;
+              })
+              for(let i = 0; i < data.length; i++){
+                data[i].Tasks.sort(function (a, b) {
+                  if (a.index > b.index) {
+                    return 1;
+                  }
+                  if (a.index < b.index) {
+                    return -1;
+                  }
+                  return 0;
+                })
+              }
+              this.props.setTasklist(data);
+          })
+           
+    }
+
+    onDragEnd = result => {
+      console.log(result);
+      let data = {
+        originId: result.source.droppableId,
+        originIndex: result.source.index,
+        destId: result.destination.droppableId,
+        destIndex: result.destination.index,
+        board: this.props.boardActive
+      }
+
+      Axios.post('http://localhost:3001/task/changeoflist', data)
+      .then(result => {
+        let data = result.data;
+              console.log(data);
+                data.sort(function (a, b) {
+                  if (a.id > b.id) {
+                    return 1;
+                  }
+                  if (a.id < b.id) {
+                    return -1;
+                  }
+                  return 0;
+                })
+                for(let i = 0; i < data.length; i++){
+                  data[i].Tasks.sort(function (a, b) {
                     if (a.index > b.index) {
                       return 1;
                     }
@@ -77,13 +89,8 @@ class BoardDetails extends Component {
                     return 0;
                   })
                 }
-                this.props.setTasklist(result.data);
-              })
-           
-    }
-
-    onDragEnd = result => {
-      console.log(result);
+                this.props.setTasklist(data);
+      })
     }
 
     handleClick = (e) => {
@@ -110,12 +117,32 @@ class BoardDetails extends Component {
       }
       Axios.post('http://localhost:3001/tasklist/create', data)
         .then(result => {
-          console.log(result-data);
-          this.props.setTasklist(result.data.taskLists);
+          let data = result.data;
+              console.log(data);
+                data.sort(function (a, b) {
+                  if (a.id > b.id) {
+                    return 1;
+                  }
+                  if (a.id < b.id) {
+                    return -1;
+                  }
+                  return 0;
+                })
+                for(let i = 0; i < data.length; i++){
+                  data[i].Tasks.sort(function (a, b) {
+                    if (a.index > b.index) {
+                      return 1;
+                    }
+                    if (a.index < b.index) {
+                      return -1;
+                    }
+                    return 0;
+                  })
+                }
+                this.props.setTasklist(data);
           this.setState({
             addTaskList: false
           })
-          .then(result => console.log('Hola'))
         })
     }
 
@@ -140,7 +167,7 @@ class BoardDetails extends Component {
 
     render(){
         return (
-            <div>
+            <div className="container-board-details">
               <div>
                   <HeaderDashboard />
                   {this.state.addTask === true 
@@ -150,7 +177,7 @@ class BoardDetails extends Component {
                   null
                   }
               </div>
-              <div style={{ display: "flex", height: "100%" }} className="constainer-list">
+              <div style={{ display: "flex"}} className="container-list">
                   <DragDropContext
                       onDragEnd={result => {this.onDragEnd(result)}}
                   >
@@ -166,7 +193,7 @@ class BoardDetails extends Component {
                           id={column.id}
                         >
                           <div style={{ margin: 8 }} className="list">
-                          <input type="text" value={column.description} />
+                          <input type="text" placeholder={column.description} />
                             <Droppable droppableId={(column.id).toString()} key={columnId}>
                               {(provided, snapshot) => {
                                 return (
@@ -174,10 +201,9 @@ class BoardDetails extends Component {
                                     {...provided.droppableProps}
                                     ref={provided.innerRef}
                                     style={{
-                                      
+                            
                                       padding: 4,
                                       width: 250,
-                                      minHeight: 500
                                     }}
                                     className="tasklist"
                                   >
@@ -201,13 +227,14 @@ class BoardDetails extends Component {
                                                   margin: "0 0 8px 0",
                                                   minHeight: "50px",
                                                   backgroundColor: snapshot.isDragging
-                                                    ? "#263B4A"
-                                                    : "#456C86",
-                                                  color: "white",
+                                                    ? "#ffffff"
+                                                    : "#ffffff",
+                                                  color: "#172b4d",
                                                   ...provided.draggableProps.style
                                                 }}
-                                              onClick={this.handleClick}>
-                                                {item.description}
+                                              onClick={this.handleClick} className="tags">
+                                                <p>{item.name}</p>
+                                                
                                               </div>
                                             );
                                           }}
