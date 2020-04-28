@@ -7,6 +7,8 @@ import Axios from 'axios';
 import { saveTaskList } from '../../store/actions/taskListActions';
 import NewTask from '../../components/NewTask/NewTask';
 import { boardActive } from '../../store/actions/boardActiveActions';
+import ModalDescriptionTask from '../../components/ModalDescriptionTask/ModalDescriptionTask';
+import { taskSave } from '../../store/actions/taskActiveAction';
 
 
 class BoardDetails extends Component {
@@ -18,7 +20,9 @@ class BoardDetails extends Component {
             nameTaskList: '',
             addTask: false,
             idTaskList: null,
-            tasklists: null
+            tasklists: null,
+            background:null,
+            modalDescriptionTask: false
         }
     }
 
@@ -26,6 +30,18 @@ class BoardDetails extends Component {
         let data = {
             board: this.props.boardActive
         }
+
+        let boardId = {
+          id: this.props.boardActive
+        }
+
+        Axios.post('http://localhost:3001/board/searchbyid', boardId)
+          .then(result => {
+           this.setState({
+             background: result.data.background
+           })
+          });
+
         Axios.post('http://localhost:3001/tasklist/findtasklist', data)
           .then(result => {
             let data = result.data;
@@ -165,14 +181,35 @@ class BoardDetails extends Component {
       })
     }
 
+    handleModalDescriptionTask = () => {
+      this.setState({
+        modalDescriptionTask: !this.state.modalDescriptionTask
+      })
+    }
+
+    openModalDescriptionTask = (event) => {
+      event.preventDefault();
+      console.log(event.target.id);
+      this.props.taskSave(event.target.id)
+      this.setState({
+        modalDescriptionTask: !this.state.modalDescriptionTask
+      })
+    }
+
     render(){
         return (
-            <div className="container-board-details">
+            <div style={{backgroundImage: "url(/img/background/"+this.state.background+".jpg)"}} className="container-board-details">
               <div>
                   <HeaderDashboard />
                   {this.state.addTask === true 
                   ?
                   <NewTask handleModal={this.handleModal} idTaskList={this.state.idTaskList}/>
+                  :
+                  null
+                  }
+                  {this.state.modalDescriptionTask === true
+                  ?
+                  <ModalDescriptionTask handleModal={this.handleModalDescriptionTask}/>
                   :
                   null
                   }
@@ -200,11 +237,6 @@ class BoardDetails extends Component {
                                   <div
                                     {...provided.droppableProps}
                                     ref={provided.innerRef}
-                                    style={{
-                            
-                                      padding: 4,
-                                      width: 250,
-                                    }}
                                     className="tasklist"
                                   >
                                     {column.Tasks.map(item => {
@@ -217,7 +249,8 @@ class BoardDetails extends Component {
                                           {(provided, snapshot) => {
                                             return (
                                               <div
-                                              id={columnId}
+                                              onClick={this.openModalDescriptionTask}
+                                                id={item.id}
                                                 ref={provided.innerRef}
                                                 {...provided.draggableProps}
                                                 {...provided.dragHandleProps}
@@ -232,8 +265,8 @@ class BoardDetails extends Component {
                                                   color: "#172b4d",
                                                   ...provided.draggableProps.style
                                                 }}
-                                              onClick={this.handleClick} className="tags">
-                                                <p>{item.name}</p>
+                                                 className="tags">
+                                                <p id={item.id} >{item.name}</p>
                                                 
                                               </div>
                                             );
@@ -284,7 +317,8 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
     return {
-        setTasklist: (tasklist) => dispatch(saveTaskList(tasklist))
+        setTasklist: (tasklist) => dispatch(saveTaskList(tasklist)),
+        taskSave: (task) => dispatch(taskSave(task))
     }
 }
 

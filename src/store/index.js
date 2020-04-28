@@ -1,11 +1,11 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import boardReducer from './reducers/boardReducer';
 import loadingReducer from './reducers/loadingReducer';
 import tokenReducer from './reducers/tokenReducer';
-import columnsReducer from './reducers/columnsReducer';
 import userReducer from './reducers/userReducer';
 import taskListReducer from './reducers/taskListReducer';
 import boardActiveReducer from './reducers/boardActiveReducer';
+import taskActiveReducer from './reducers/taskActiveReducer';
 
 function saveToLocalStorage(state) {
     try {
@@ -31,10 +31,10 @@ const reducers = combineReducers({
     boardReducer,
     loadingReducer,
     tokenReducer,
-    columnsReducer,
     userReducer,
     taskListReducer,
-    boardActiveReducer
+    boardActiveReducer,
+    taskActiveReducer
 });
 
 const persistedState = loadFromLocalStorage();
