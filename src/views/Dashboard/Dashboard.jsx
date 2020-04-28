@@ -51,8 +51,6 @@ class Dashboard extends Component {
                 <div className="body-dashboard">
                     <div className="sidebar">
                         <h3>Tableros</h3>
-                        <h3>Plantillas</h3>
-                        <h3>Inicio</h3>
                     </div>
                     {this.state.modalShow === true 
                     ?
@@ -67,7 +65,7 @@ class Dashboard extends Component {
                         </div>
                         <div className="mini-boards">
                             {this.props.dashboars.map(board => (
-                                <MiniBoard key={board.Board.id} name={board.Board.description} id={board.Board.id} openBoard={this.openBoard}/>
+                                <MiniBoard key={board.Board.id} name={board.Board.description} background={board.Board.background} id={board.Board.id} openBoard={this.openBoard}/>
                             )
                             )}
                         </div>

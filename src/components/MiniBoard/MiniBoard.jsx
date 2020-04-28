@@ -12,7 +12,7 @@ class MiniBoard extends Component {
 
     render(){
         return(
-            <div className="body-mini-board" onClick={this.handleKey}>
+            <div className="body-mini-board" onClick={this.handleKey} style={{backgroundImage:"url(/img/background/"+this.props.background+".jpg)"}}>
                 {this.props.name}
             </div>
         )
